@@ -1,9 +1,5 @@
 - hosts: all
   tasks:
-# This will include the vm.yml file to install or check statuses of packages
-  # - name: Installs php-wordpress stuff from php-wordpress.yml for VMs
-  #   include_tasks: php-wordpress.yml
-  #   when: group_names.0 == "web"
 
 # This will include the vm.yml file to install or check statuses of packages
   - name: Installs packages from web.yml for VMs
@@ -14,6 +10,7 @@
   - name: Installs packages from db.yml for DBs
     include_tasks: db.yml
     when: group_names.0 == "db"
+    
 # # For debugging reasons.
 #   - name: VMs are here!
 #     debug:
@@ -29,3 +26,8 @@
 #       # - "{{group_names.0}}"
 #       # - "{{ansible_os_family}}"
 #     when: group_names.0 == "db"
+
+# # This will include the vm.yml file to install or check statuses of packages
+#   - name: Installs php-wordpress stuff from php-wordpress.yml for VMs
+#     include_tasks: php-wordpress.yml
+#     when: group_names.0 == "web"

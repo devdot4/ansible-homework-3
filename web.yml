@@ -18,7 +18,7 @@
 - name: Checks if (httpd) is running for (Centos7.6)
   service:
     name: httpd
-    state: restarted
+    state: started
   when: ansible_os_family == "RedHat"
 
 # --------------------------Ubuntu 20.04----------------------------
@@ -34,5 +34,5 @@
 - name: Checks if (apache2) is running for (Ubuntu20.04)
   service:
     name: apache2
-    state: restarted
+    state: started
   when: ansible_os_family == "Debian"
