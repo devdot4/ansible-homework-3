@@ -1,0 +1,37 @@
+# ----------------------------Centos 7.6---------------------------
+
+# Installs mariadb-server for Centos 7.6
+- name: Installs [mariadb-server] for [Centos7.6]
+  package:
+    name: mariadb-server
+    state: latest
+  when: ansible_os_family == "RedHat"
+
+# Checks if mariadb for Centos 7.6 is running.
+- name: This will check if [mariadb] is running for [Centos7.6]
+  service:
+    name: mariadb
+    state: started
+  when: ansible_os_family == "RedHat"
+
+# --------------------------Ubuntu 20.04----------------------------
+
+# sudo-apt update
+- name: sudo-apt update for [Ubuntu 20.04]
+  apt:
+    update_cache: yes
+  when: ansible_os_family == "Debian"
+
+# Installs mariadb-server for Ubuntu 20.04
+- name: Installs [mariadb-server] for [Ubuntu 20.04]
+  package:
+    name: mariadb-server
+    state: latest
+  when: ansible_os_family == "Debian"
+  
+# Checks if mysql-server for Ubuntu 20.04 is running.
+- name: This will check if [mysql-server] is running for [Ubuntu20.04]
+  service:
+    name: mariadb
+    state: started
+  when: ansible_os_family == "Debian"

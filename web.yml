@@ -1,0 +1,38 @@
+# ----------------------------Centos 7.6---------------------------
+
+# This will disable SElinux for Centos 7.6
+- name: Disables SElinux
+  selinux:
+    policy: targeted
+    state: permissive
+  when: ansible_os_family == "RedHat"
+
+# Installs httpd for Centos 7.6
+- name: Installs (httpd) for (Centos7.6)
+  package:
+    name: httpd
+    state: latest
+  when: ansible_os_family == "RedHat"
+
+# Checks if httpd for Centos 7.6 is running. 
+- name: Checks if (httpd) is running for (Centos7.6)
+  service:
+    name: httpd
+    state: restarted
+  when: ansible_os_family == "RedHat"
+
+# --------------------------Ubuntu 20.04----------------------------
+
+# Installs apache2 for Ubuntu 20.04.
+- name: Installs (apache2) for (Ubuntu20.04)
+  package:
+    name: apache2
+    state: latest
+  when: ansible_os_family == "Debian"
+
+# Checks if apache2 for Ubuntu 20.04 is running.
+- name: Checks if (apache2) is running for (Ubuntu20.04)
+  service:
+    name: apache2
+    state: restarted
+  when: ansible_os_family == "Debian"
